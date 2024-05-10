@@ -64,12 +64,13 @@ function check(){
 - Therefore, it is good to use <b> let </b> which is an ES6 feature.
 
 ## Executional Context
-- - It is a container where the function’s code is executed & is created whenever the function is called. So, whenever we run a function, that same function will create an imaginary container where it will contain the below three things:
+- It is a container where the function’s code is executed & is created whenever the function is called. So, whenever we run a function, that same function will create an imaginary container where it will contain the below three things:
 <ol>
     <li>Variables</li>
     <li>Functions inside the parent function</li>
     <li>Lexical Env</li>
 </ol>
+
 - Here the fun1 can use the variable 'a' and the fun2() but it cannot access the variable that is inside the internal fun2() that is 'b.' This is because the scope of ‘var’ is nearest parent function, i.e., variable ‘b’ cannot be used by fun1() and that detail we get to know by Lexical Env.
 
 ```js
