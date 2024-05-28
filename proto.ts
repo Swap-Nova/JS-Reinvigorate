@@ -38,7 +38,7 @@ console.log("=====================");
 // Define the type with an optional property : Typescript
 type ObjectTestType = {
     Name: string,
-    Designation?: string, // Mark as optional
+    Designation?: string, // Mark as optional since it will be deleted
     Company: string
 };
 
@@ -51,6 +51,8 @@ let object_test: ObjectTestType = {
 let copy_object_values = {...object_test}
 console.log("Object Storage");
 for(let key in copy_object_values){
+    // in for-loop ts cannot specifiy the key type
+    // TS ensures that the strings can be used to index the object safely
     const typedKey = key as keyof ObjectTestType;
     console.log(typedKey + " : " + copy_object_values[typedKey]);
 }
@@ -61,6 +63,8 @@ copy_object_values.Name = "Jayden";
 console.log("Chaning and deleting objects");
 delete copy_object_values.Designation;
 for(let key in copy_object_values){
+    // in for-loop ts cannot specifiy the key type
+    // TS ensures that the strings can be used to index the object safely
     const typedKey = key as keyof ObjectTestType;
     console.log(typedKey + " : " + copy_object_values[typedKey]);
 }
