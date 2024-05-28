@@ -1,12 +1,12 @@
 // @ts-check
 
 // function
-function check(){
+function check_function(){
     for(let i=0;i<12;i++){
         console.log("For Loop: " + i);
     }
 }
-check();
+check_function();
 console.log("=====================");
 
 // copy reference values
@@ -35,7 +35,7 @@ for_each_values.forEach(function(val){
 })
 console.log("=====================");
 
-// Define the type with an optional property : Typescript stuff
+// Define the type with an optional property : Typescript
 type ObjectTestType = {
     Name: string,
     Designation?: string, // Mark as optional
@@ -51,7 +51,8 @@ let object_test: ObjectTestType = {
 let copy_object_values = {...object_test}
 console.log("Object Storage");
 for(let key in copy_object_values){
-    console.log(key + " : " + copy_object_values[key]);
+    const typedKey = key as keyof ObjectTestType;
+    console.log(typedKey + " : " + copy_object_values[typedKey]);
 }
 console.log("=====================");
 
@@ -60,7 +61,8 @@ copy_object_values.Name = "Jayden";
 console.log("Chaning and deleting objects");
 delete copy_object_values.Designation;
 for(let key in copy_object_values){
-    console.log(key + " : " + copy_object_values[key]);
+    const typedKey = key as keyof ObjectTestType;
+    console.log(typedKey + " : " + copy_object_values[typedKey]);
 }
 console.log("=====================");
 
@@ -81,12 +83,14 @@ setTimeout(function(){
 console.log("=====================");
 
 // First Class Functions
-function first_class_function(a){
+// specify the function type
+function first_class_function(a:()=>void){ 
     a();
 }
 first_class_function(function(){
-    console.log("Running a type of first class function");
-})
+        console.log("Running a type of first class function");
+    }
+)
 console.log("=====================");
 
 // timeout again 
